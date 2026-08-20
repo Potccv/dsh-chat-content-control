@@ -1,0 +1,6 @@
+# Installs the chat-content-control plugin as one Loader row.
+# The package's dsh.client manifest also makes the browser half load in the
+# web client module roster.
+- insert:
+    - id: dsh-chat-content-control
+      name: 'dsh-chat-content-control'
