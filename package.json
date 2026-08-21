@@ -44,8 +44,8 @@
   },
   "scripts": {
     "build": "bash scripts/build.sh",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "build:client": "tsdown"
+    "typecheck": "node scripts/generate-tsconfig.mjs && tsc -p tsconfig.build.json --noEmit",
+    "build:client": "node scripts/generate-tsconfig.mjs && tsdown --tsconfig tsconfig.build.json"
   },
   "exports": {
     ".": {
