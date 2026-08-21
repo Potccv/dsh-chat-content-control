@@ -3,3 +3,4 @@ lib/
 *.tsbuildinfo
 *.tgz
 tsconfig.build.json
+AI_MEMORY.md
