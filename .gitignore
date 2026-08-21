@@ -1,6 +1,0 @@
-node_modules/
-lib/
-*.tsbuildinfo
-*.tgz
-tsconfig.build.json
-AI_MEMORY.md
