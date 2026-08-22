@@ -1,6 +1,6 @@
 import type { Context } from 'cordis'
 import { installSettingsSection, settingsNamespace } from '@deepseek-ai/dsh-settings'
-import z from 'schemastery'
+import z from '@deepseek-ai/schemastery'
 
 export const name = 'dsh-chat-content-control'
 

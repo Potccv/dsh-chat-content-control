@@ -9,7 +9,7 @@ cd "$ROOT"
 # Fresh output: stale files from earlier iterations must not ship in the tarball.
 rm -rf lib
 
-# DSH_CHECKOUT 探测：环境变量 → 本仓库（Workfile 插件常见布局）→ 常见目录名 → 受限 find → 用户手动输入
+# DSH_CHECKOUT 探测：环境变量 → 本仓库（源码目录）→ 常见目录名 → 受限 find → 用户手动输入
 CHECKOUT="${DSH_CHECKOUT:-}"
 if [ -z "$CHECKOUT" ] && [ -d "$ROOT/../../packages" ]; then
   CHECKOUT="$(cd "$ROOT/../.." && pwd)"

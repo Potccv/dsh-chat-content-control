@@ -71,7 +71,7 @@ const paths = {
   'react/jsx-runtime': [P('node_modules/.pnpm/@types+react@18.3.31/node_modules/@types/react/jsx-runtime.d.ts')],
   cordis: [P('vendor/cordis/lib/types/index.d.ts')],
   cosmokit: [P('vendor/cosmokit/lib/types/index.d.ts')],
-  schemastery: [P('vendor/schemastery/lib/types/index.d.ts')],
+  '@deepseek-ai/schemastery': [P('vendor/schemastery/lib/types/index.d.ts')],
   '@deepseek-ai/dsh-settings': [P('packages/settings/settings/lib/types/index.d.ts')],
   '@deepseek-ai/dsh-token-meter/client': [P('packages/llm/token-meter/lib/types/client.d.ts')],
   '@deepseek-ai/dsh-client-runtime/client': [P('packages/client/runtime/lib/types/client/index.d.ts')],

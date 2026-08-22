@@ -33,74 +33,52 @@ DeepSeek Harness 浏览器插件：调整聊天内容列宽、关闭统计信息
 
 ## 安装方法
 
+走 DSH 标准 profile 安装（与 dsh-meter 一致）。安装后代码位于 profile 的 pnpm 管理目录；源码安装使用 `file:` 将源码复制进该目录，不创建指向源码目录的软链接。
+
 ### 方式一：通过 tarball 安装（推荐，对方不需要构建）
 
-分发构建产物：
-
-```text
-dsh-chat-content-control-0.0.1.tgz
+```bash
+dsh plugin --profile web add ./dsh-chat-content-control-0.0.1.tgz
 ```
 
-接收方执行：
+验证并启动：
 
 ```bash
-# 1. 确认 dsh CLI 可用，并已有目标 profile（例如 web）
-dsh --version
-
-# 2. 把 tarball 安装进 profile
-dsh plugin --profile web add ./dsh-chat-content-control-0.0.1.tgz
-
-# 3. 验证插件层已加入
 dsh --profile web --dump-config
-
-# 4. 启动
 dsh --profile web
 ```
 
-启动后打开网页并刷新，进入 **设置 → 插件 → 聊天内容控制** 即可看到配置卡片。
+> tarball 内已经包含预构建的 `lib/` 和 `cordis.patch.yml`，安装时不需要构建。
 
-> tarball 内已经包含预构建的 `lib/` 和 `cordis.patch.yml`，因此安装时不需要运行构建脚本，也不需要额外的 `allowBuilds` 授权。
+### 方式二：通过源码安装
 
-### 方式二：通过源码安装（对方使用 DeepSeek Harness 源码运行）
+在插件目录先构建：
 
-如果对方是从 DeepSeek Harness 源码运行，可以直接使用本插件源码目录安装。
+```bash
+cd /path/to/dsh-chat-content-control
+npm run build
+npm run build:client
+```
 
-1. 把插件源码放到 DeepSeek Harness checkout 内，例如：
+然后在 DeepSeek Harness 源码根目录安装：
 
-   ```text
-   <deepseek-harness>/Workfile/dsh-chat-content-control/
-   ```
+```bash
+cd /path/to/deepseek-harness
+pnpm dsh plugin --profile web add file:/path/to/dsh-chat-content-control
+pnpm dsh --profile web
+```
 
-2. 在插件目录里先构建：
+本机示例：
 
-   ```bash
-   cd <deepseek-harness>/Workfile/dsh-chat-content-control
-   npm run build
-   npm run build:client
-   ```
+```bash
+cd /root/deepseek-harness/Workfile/dsh-chat-content-control
+npm run build
+npm run build:client
 
-   如果插件目录在 checkout 外面，指定 `DSH_CHECKOUT`：
-
-   ```bash
-   cd /path/to/dsh-chat-content-control
-   DSH_CHECKOUT=/path/to/deepseek-harness npm run build
-   npm run build:client
-   ```
-
-3. 在 DeepSeek Harness 源码根目录安装：
-
-   ```bash
-   pnpm dsh plugin --profile web add /path/to/deepseek-harness/Workfile/dsh-chat-content-control
-   ```
-
-   这会将该源码目录 link 进 profile，并根据 `dsh.bundle` 自动追加到 `dsh.profile.bundles`，再通过 `cordis.patch.yml` 插入插件行。
-
-4. 验证并启动：
-
-   ```bash
-   pnpm dsh --profile web --dump-config
-   pnpm dsh --profile web
-   ```
+cd /root/deepseek-harness
+pnpm dsh plugin --profile web add file:/root/deepseek-harness/Workfile/dsh-chat-content-control
+pnpm dsh --profile web
+```
 
 ### 方式三：开发时用超级模组注入器（仅限当前开发环境）
 
