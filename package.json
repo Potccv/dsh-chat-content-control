@@ -1,6 +1,6 @@
 {
   "name": "dsh-chat-content-control",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Customize chat content width, long-info auto-hide toggle, and per-message IO token ratio in DeepSeek Harness web UI",
   "private": true,
   "type": "module",
